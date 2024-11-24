@@ -2588,8 +2588,23 @@ end, function()
 end)
 
 
+
+
+
+-- End
+-- Function for Mobile
+
+
+
+
 -- Script to toggle the visibility of the frame at "game:GetService(\"CoreGui\").SimpleSpy2.Background"
 local coreGui = game:GetService("CoreGui")
+
+-- Check for duplicate ScreenGui and destroy if found
+local existingScreenGui = coreGui:FindFirstChild("ToggleScreenGui")
+if existingScreenGui then
+    existingScreenGui:Destroy()
+end
 
 -- Create a ScreenGui to parent the toggle button
 local screenGui = Instance.new("ScreenGui")
