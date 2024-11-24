@@ -2625,7 +2625,7 @@ toggleButton.Parent = screenGui
 
 -- Set up the toggle button properties
 toggleButton.Size = UDim2.new(0, 32, 0, 32)
-toggleButton.Position = UDim2.new(0.5, 422, 0.8, -28)
+toggleButton.Position = UDim2.new(0.5, -16, 0.8, -16)
 toggleButton.Text = ""
 toggleButton.BackgroundColor3 = Color3.fromRGB(37, 35, 38)
 toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -2757,3 +2757,12 @@ local function destroyCursorFrame()
 end
 
 game:GetService("RunService").RenderStepped:Connect(destroyCursorFrame)
+
+-- Destroy the ScreenGui if SimpleSpy2 is destroyed
+game:GetService("RunService").RenderStepped:Connect(function()
+    if not coreGui:FindFirstChild("SimpleSpy2") then
+        if screenGui then
+            screenGui:Destroy()
+        end
+    end
+end)
